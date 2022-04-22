@@ -3,21 +3,20 @@ import { Post } from './Models/Post.js'
 import { EventEmitter } from './Utils/EventEmitter.js'
 import { isValidProp } from './Utils/isValidProp.js'
 
+// new Post({
+//   creatorName: 'john lennon',
+//   title: 'poo0p',
+//   body: 'this is a post wow!~',
+//   datePosted: '10/12',
+//   creatorId: '12131'
+// })
 class AppState extends EventEmitter {
   user = {}
   account = {}
   /** @type {import('./Models/Value').Value[]} */
   values = []
   socketData = []
-  posts = [
-    new Post({
-      creatorName: 'john lennon',
-      title: 'poo0p',
-      body: 'this is a post wow!~',
-      datePosted: '10/12',
-      creatorId: '12131'
-    })
-  ]
+  posts = []
 }
 
 export const ProxyState = new Proxy(new AppState(), {

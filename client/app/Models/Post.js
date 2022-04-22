@@ -1,7 +1,7 @@
 export class Post {
   constructor(data) {
     this.creatorName = data.creatorName
-    this.title = data.title || 'Title'
+    this.title = data.title || ''
     this.body = data.body
     this.score = data.score || 0
     this.datePosted = data.datePosted
@@ -18,20 +18,29 @@ export class Post {
       <p class="mx-0 my-0">${this.datePosted}</p>
     </div>
   </span>
-    <img class="img-fluid" src="/assets/img/Beach-Ghost.jpg">
+    <div>${this.body}</div>
+    <div class="container d-flex justify-content-between">
     <p class="">
       <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        Comments >
+      <i class="mdi mdi-comment-outline fs-3"></i>
       </button>
+      <span class="flex-direction-row">
+      <p class="btn"><i class="mdi mdi-pencil-box-outline fs-3"></i></p>
+      <p class="btn"><i class="mdi mdi-close-outline fs-3"></i></p>
+    </span>
     </p>
-    <div class="collapse pb-2" id="collapseExample">
+    
+    </div>
+    <div class="collapse" id="collapseExample">
       <div class="card text-center">
         <ul class="list-unstyled" id="comments">
-        <li><h6>${this.body}</h6></li>
+        <!--comments-->
+        <li><h6></h6></li>
         </ul>
       </div>
     </div>
   </div>
+  <br>
    `
   }
 }
