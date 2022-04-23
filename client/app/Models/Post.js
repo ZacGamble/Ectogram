@@ -17,7 +17,7 @@ export class Post {
    <div>
    <p>${this.score}</p>
    <button type="button" class="mdi mdi-ghost" onclick = "app.postsController.changeScore('${this.id}', 1)"></button>
-   <button type="button" class="mdi mdi-ghost" onclick = "app.postsController.changeScore('${this.id}', -1)"></button>
+   <button type="button" class="mdi mdi-ghost-off" onclick = "app.postsController.changeScore('${this.id}', -1)"></button>
    </div>
    <span class="d-flex justify-content-between">
     <h2>${this.title}</h2>
