@@ -9,3 +9,15 @@
   background: rgb(2, 0, 36);
   background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(31, 51, 51, 0.5242913063992276) 77%, rgba(120, 227, 208, 0.0158643401070927) 100%);
 }
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
