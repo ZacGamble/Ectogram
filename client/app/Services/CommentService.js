@@ -9,8 +9,9 @@ class CommentsService {
     console.log('hi from comments service', res.data)
   }
 
-  async addComment() {
-
+  async addComment(postId) {
+    
+    const res = await api.post(`/api/${this.postId}/comments`)
   }
 }
 export const commentsService = new CommentsService()

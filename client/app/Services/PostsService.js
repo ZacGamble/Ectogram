@@ -28,7 +28,6 @@ class PostsService {
     // const newPost = new Post(res.data)
     ProxyState.posts = [...ProxyState.posts, newPost]
     return newPost
-    console.log(newPost)
   }
 
   async editPost() {

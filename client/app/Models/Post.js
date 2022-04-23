@@ -24,7 +24,7 @@ export class Post {
     <div>${this.body}</div>
     <div class="container d-flex justify-content-between">
     <p class="">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#${this.id}" aria-expanded="false" aria-controls="collapseExample">
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${this.id}" aria-expanded="false" aria-controls="collapseExample">
       <i class="mdi mdi-comment-outline fs-3" title="show comments"></i>
       </button>
       <span class="flex-direction-row">
@@ -34,10 +34,11 @@ export class Post {
     </p>
     
     </div>
-    <div class="collapse" id="${this.id}">
+    <div class="collapse" id="collapse-${this.id}">
       <div class="card text-center">
-        <ul class="list-unstyled" id="${this.id}-comments">
-        <!--comments-->
+        <p onclick="app.commentsController.addComment('${this.id}')" class="btn"><i class="mdi mdi-pen fs-3" title="add comment"></i></p>
+        <ul class="list-unstyled" id="comments">
+        ${this.Comments}
        
         </ul>
       </div>
@@ -45,5 +46,17 @@ export class Post {
   </div>
   <br>
    `
+  }
+
+  get Comments() {
+    let template = ''
+    const comments = ProxyState.comments.filter(c => c.postId === this.id)
+    console.log(comments)
+    // eslint-disable-next-line no-return-assign
+    comments.forEach(c => {
+      console.log(c)
+      template += c.Template
+    })
+    return template
   }
 }
