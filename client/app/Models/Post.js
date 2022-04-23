@@ -1,12 +1,14 @@
+import { ProxyState } from '../AppState.js'
+
 export class Post {
   constructor(data) {
-    this.id = data.id || ''
-    this.creatorName = data.creatorName
+    this.creatorName = data.creatorName || ProxyState.account.name
     this.title = data.title || ''
     this.body = data.body
     this.score = data.score || 0
     this.datePosted = data.datePosted
-    this.creatorId = data.creatorId
+    this.creatorId = data.creatorId || ProxyState.account.id
+    this.id = data.id || ''
   }
 
   get Template() { /* html */
@@ -27,21 +29,21 @@ export class Post {
     <div>${this.body}</div>
     <div class="container d-flex justify-content-between">
     <p class="">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <i class="mdi mdi-comment-outline fs-3"></i>
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#${this.id}" aria-expanded="false" aria-controls="collapseExample">
+      <i class="mdi mdi-comment-outline fs-3" title="show comments"></i>
       </button>
       <span class="flex-direction-row">
-      <p class="btn"><i class="mdi mdi-pencil-box-outline fs-3"></i></p>
-      <p class="btn"><i class="mdi mdi-close-outline fs-3"></i></p>
+      <p class="btn"><i class="mdi mdi-pencil-box-outline fs-3" title="edit post"></i></p>
+      <p class="btn"><i class="mdi mdi-close-outline fs-3" title='remove post'></i></p>
     </span>
     </p>
     
     </div>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="${this.id}">
       <div class="card text-center">
-        <ul class="list-unstyled" id="comments">
+        <ul class="list-unstyled" id="${this.id}-comments">
         <!--comments-->
-        <li><h6></h6></li>
+       
         </ul>
       </div>
     </div>
