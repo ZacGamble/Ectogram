@@ -1,3 +1,4 @@
+import { Auth0Provider } from '@bcwdev/auth0provider'
 import { postsService } from '../services/PostsService'
 import BaseController from '../utils/BaseController'
 
@@ -7,7 +8,7 @@ export class PostsController extends BaseController {
     this.router
       .get('', this.getAllPosts)
       .get('/:id', this.getPostById)
-      // Auth0 TODO
+      // .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createPost)
       .put('/:id', this.editPost)
       .delete('/:id', this.removePost)
@@ -33,6 +34,8 @@ export class PostsController extends BaseController {
 
   async createPost(req, res, next) {
     try {
+      // REVIEW Checks if the req id matches the creator's id
+      req.body.creatorId = req.params.id
       const newPost = await postsService.createPost(req.body)
       res.send(newPost)
     } catch (error) {
@@ -43,6 +46,7 @@ export class PostsController extends BaseController {
   async editPost(req, res, next) {
     try {
       req.body.id = req.params.id
+      req.body.creatorId = req.userInfo.id
       const postToEdit = await postsService.editPost(req.body)
       res.send(postToEdit)
     } catch (error) {
@@ -52,7 +56,7 @@ export class PostsController extends BaseController {
 
   async removePost(req, res, next) {
     try {
-      const postToRemove = await postsService.removePost(req.params.id)
+      const postToRemove = await postsService.removePost(req.params.id, req.userInfo.id)
       res.send(postToRemove)
     } catch (error) {
       next(error)
