@@ -14,8 +14,8 @@ class PostsService {
     post.score += value
     const newPost = new Post(post)
     await api.put('api/posts/' + postId, newPost)
-    ProxyState.posts = ProxyState.posts.splice(index, 1)
-    return newPost
+    ProxyState.posts.splice(index, 1, post)
+    ProxyState.posts = ProxyState.posts
   }
 
   async sortPostsByDate() {
@@ -35,7 +35,9 @@ class PostsService {
     await api.post('/api/posts', newPost)
     // const newPost = new Post(res.data)
     ProxyState.posts = [...ProxyState.posts, newPost]
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModalCenter')).hide()
     return newPost
+
   }
 
   async editPost() {

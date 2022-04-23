@@ -55,7 +55,8 @@ export class PostsController {
       const formElem = window.event.target
       const formData = {
         title: formElem.title.value,
-        body: formElem.body.value
+        body: formElem.body.value,
+        image: formElem.image.value
       }
       formElem.reset()
       await postsService.addPost(formData)

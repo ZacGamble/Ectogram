@@ -10,7 +10,6 @@ class CommentsService {
   }
 
   async addComment(postId) {
-    
     const res = await api.post(`/api/${this.postId}/comments`)
   }
 }
