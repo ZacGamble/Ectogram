@@ -13,7 +13,7 @@ export class Post {
 
   get Template() { /* html */
     return `
-   <div class="container" id="post">
+   <div class="container gradient-background text-light shadow" id="post">
    <div>
    <p>${this.score}</p>
    <button type="button" class="mdi mdi-ghost" onclick = "app.postsController.changeScore('${this.id}', 1)"></button>
