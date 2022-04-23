@@ -1,8 +1,10 @@
 #post {
-  max-width: 50%;
-  max-height: 100%;
+  position: relative;
+  width: 60vw;
+  max-height: 30%;
+  margin: 0 auto;
+  border-radius: 15px;
   background-color: grey;
-  border-radius: 3%;
 }
 
 .gradient-background {
@@ -20,4 +22,13 @@
   top: 0;
   bottom: 0;
   z-index: -1;
+}
+
+.mdi-ghost:active{
+  color: rgba(199, 199, 255, 0.5);
+}
+
+.btn:hover{
+  cursor: pointer;
+  
 }

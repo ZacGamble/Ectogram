@@ -14,8 +14,8 @@ class PostsService {
     post.score += value
     const newPost = new Post(post)
     await api.put('api/posts/' + postId, newPost)
-    ProxyState.posts = ProxyState.posts.splice(index, 1)
-    return newPost
+    ProxyState.posts.splice(index, 1, post)
+    ProxyState.posts = ProxyState.posts
   }
 
   async sortPostsByDate() {
