@@ -1,5 +1,7 @@
 import { ProxyState } from '../AppState.js'
+import { Post } from '../Models/Post.js'
 import { postsService } from '../Services/PostsService.js'
+import { CommentsController } from './CommentsController.js'
 
 function _drawPosts() {
   let template = ''
@@ -37,7 +39,21 @@ export class PostsController {
   }
 
   async addPost() {
-
+    try {
+      debugger
+      event.preventDefault()
+      /** @type {HTMLFormElement} */
+      // @ts-ignore
+      const formElem = window.event.target
+      const formData = {
+        title: formElem.title.value,
+        body: formElem.body.value
+      }
+      formElem.reset()
+      await postsService.addPost(formData)
+    } catch (error) {
+      console.log('Error')
+    }
   }
 
   async editPost() {

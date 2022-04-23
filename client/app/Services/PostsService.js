@@ -22,8 +22,13 @@ class PostsService {
 
   }
 
-  async addPost() {
-
+  async addPost(formData) {
+    const newPost = new Post(formData)
+    await api.post('/api/posts', newPost)
+    // const newPost = new Post(res.data)
+    ProxyState.posts = [...ProxyState.posts, newPost]
+    return newPost
+    console.log(newPost)
   }
 
   async editPost() {
