@@ -35,11 +35,14 @@ class PostsService {
     return original
   }
 
-  async removePost(reqID, userId) {
+  async removePost(reqID) {
     const foundPost = await this.getPostById(reqID)
-    if (foundPost.creatorId.toString() !== userId) {
-      throw new BadRequest("You don't have permission")
+    if (!foundPost) {
+      throw new BadRequest('Post not found')
     }
+    // if (foundPost.creatorId.toString() !== userId) {
+    // throw new BadRequest("You don't have permission")
+    // }
     const post = await dbContext.Posts.findByIdAndDelete(reqID)
     return post
   }

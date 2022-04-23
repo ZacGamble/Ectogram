@@ -46,7 +46,7 @@ export class PostsController extends BaseController {
   async editPost(req, res, next) {
     try {
       req.body.id = req.params.id
-      req.body.creatorId = req.userInfo.id
+      // req.body.creatorId = req.userInfo.id
       const postToEdit = await postsService.editPost(req.body)
       res.send(postToEdit)
     } catch (error) {
@@ -56,7 +56,7 @@ export class PostsController extends BaseController {
 
   async removePost(req, res, next) {
     try {
-      const postToRemove = await postsService.removePost(req.params.id, req.userInfo.id)
+      const postToRemove = await postsService.removePost(req.params.id)
       res.send(postToRemove)
     } catch (error) {
       next(error)
