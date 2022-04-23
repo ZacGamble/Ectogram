@@ -9,6 +9,7 @@ export class Post {
     this.datePosted = data.datePosted
     this.creatorId = data.creatorId || ProxyState.account.id
     this.id = data.id || ''
+    this.image = data.image || ''
   }
 
   get Template() { /* html */
@@ -20,6 +21,7 @@ export class Post {
       <p class="mx-0 my-0">${this.datePosted}</p>
       <p class="btn"><i class="mdi mdi-close-outline fs-3 p-0 m-0" title='remove post'></i></p>
     </span>
+    <img src="${this.image}" alt="" class="img-fluid">
     <div>${this.body}</div>
     <div class="row d-flex justify-content-end">
       <div class="col-10">

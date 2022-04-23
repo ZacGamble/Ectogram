@@ -3,6 +3,7 @@ const Schema = mongoose.Schema
 export const PostSchema = new Schema(
   {
     creatorName: { type: String, required: true },
+    image: { type: String },
     body: { type: String, required: true },
     // creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },TODO
     score: { type: Number },
