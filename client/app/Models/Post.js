@@ -17,7 +17,7 @@ export class Post {
    <div>
    <p>${this.score}</p>
    <button type="button" class="mdi mdi-ghost" onclick = "app.postsController.changeScore('${this.id}', 1)"></button>
-   <button type="button" class="mdi mdi-ghost" onclick = "app.postsController.changeScore('${this.id}', -1)"></button>
+   <button type="button" class="mdi mdi-ghost-off" onclick = "app.postsController.changeScore('${this.id}', -1)"></button>
    </div>
    <span class="d-flex justify-content-between">
     <h2>${this.title}</h2>
@@ -29,8 +29,8 @@ export class Post {
     <div>${this.body}</div>
     <div class="container d-flex justify-content-between">
     <p class="">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#a123" aria-expanded="false" aria-controls="collapseExample">
-      <i class="mdi mdi-comment-outline fs-3" title="show comments" ></i>
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${this.id}" aria-expanded="false" aria-controls="collapseExample">
+      <i class="mdi mdi-comment-outline fs-3" title="show comments"></i>
       </button>
       <span class="flex-direction-row">
       <p class="btn"><i class="mdi mdi-pencil-box-outline fs-3" title="edit post"></i></p>
@@ -39,10 +39,11 @@ export class Post {
     </p>
     
     </div>
-    <div class="collapse" id="a123">
+    <div class="collapse" id="collapse-${this.id}">
       <div class="card text-center">
+        <p onclick="app.commentsController.addComment('${this.id}')" class="btn"><i class="mdi mdi-pen fs-3" title="add comment"></i></p>
         <ul class="list-unstyled" id="comments">
-        <!--comments-->
+        ${this.Comments}
        
         </ul>
       </div>
@@ -50,5 +51,17 @@ export class Post {
   </div>
   <br>
    `
+  }
+
+  get Comments() {
+    let template = ''
+    const comments = ProxyState.comments.filter(c => c.postId === this.id)
+    console.log(comments)
+    // eslint-disable-next-line no-return-assign
+    comments.forEach(c => {
+      console.log(c)
+      template += c.Template
+    })
+    return template
   }
 }

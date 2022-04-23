@@ -35,7 +35,6 @@ class PostsService {
     await api.post('/api/posts', newPost)
     // const newPost = new Post(res.data)
     ProxyState.posts = [...ProxyState.posts, newPost]
-    console.log(newPost)
     return newPost
   }
 
