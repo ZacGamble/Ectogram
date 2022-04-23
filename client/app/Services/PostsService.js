@@ -35,7 +35,9 @@ class PostsService {
     await api.post('/api/posts', newPost)
     // const newPost = new Post(res.data)
     ProxyState.posts = [...ProxyState.posts, newPost]
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModalCenter')).hide()
     return newPost
+
   }
 
   async editPost() {
