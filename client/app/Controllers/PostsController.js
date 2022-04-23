@@ -16,6 +16,15 @@ export class PostsController {
     this.getAllPosts()
   }
 
+  async changeScore(postId, value) {
+    try {
+      const newPost = await postsService.changeScore(postId, value)
+      console.log(newPost)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   async getAllPosts() {
     try {
       await postsService.getAllPosts()
