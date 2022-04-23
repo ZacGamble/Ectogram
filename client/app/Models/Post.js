@@ -21,8 +21,10 @@ export class Post {
       <p class="mx-0 my-0">${this.datePosted}</p>
       <p class="btn"><i class="mdi mdi-close-outline fs-3 p-0 m-0" title='remove post'></i></p>
     </span>
-    <img src="${this.image}" alt="" class="img-fluid">
-    <div>${this.body}</div>
+    <div class="container text-center">
+      <img src="${this.image}" alt="" class="img-fluid">
+      <h5>${this.body}</h5>
+    </div>
     <div class="row d-flex justify-content-end">
       <div class="col-10">
         <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${this.id}"
