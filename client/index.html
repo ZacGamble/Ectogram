@@ -15,45 +15,70 @@
 </head>
 
 <body>
-  <header>
+  <header class="sticky-top">
     <nav class="navbar navbar-dark navbar-expand bg-dark text-light">
-      <a class="navbar-brand text-center" href="#">
-        <img src="https://codeworks.blob.core.windows.net/public/assets/img/cw-mark.png" height="45" alt=""
-          loading="lazy">
-        <span class="ml-2">Ectogram</span>
-      </a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <a class="navbar-brand text-center" href="#">
+        <span class="ml-2">Ectogram</span>
+      </a>
+
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <!-- NAVLINKS -->
-        </div>
+      </div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Create Post
+      </button>
+      <div class="navbar-nav d-flex justify-content-center">
+        <!-- NAVLINKS -->
+
+
+
       </div>
       <div class="flex-grow-1 justify-content-end align-items-center d-flex" id="authstate"></div>
     </nav>
   </header>
   <main id="app">
     <div class="container-fluid">
-      <!-- Form Data -->
-      <form class="outline" onsubmit="app.postsController.addPost()">
-        <div class="mb-3">
-          <label for="title" class="form-label">Title</label>
-          <input type="text" class="form-control" id="title-input" name="title" aria-describedby="titleHelp">
-          <div id="titleHelp" class="form-text">Please provide a title.</div>
-        </div>
-        <div class="mb-3">
-          <label for="body" class="form-label">Body</label>
-          <input type="text" class="form-control" id="body" name="body">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
 
       <button onclick="app.commentsController.drawComments()"></button>
       <div class="row">
         <div class="col-md-12 my-5" id="posts-landing">
-         <!-- Posts go here -->
+          <!-- Posts go here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="outline p-5" onsubmit="app.postsController.addPost()">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title-input" name="title" aria-describedby="titleHelp">
+                <div id="titleHelp" class="form-text">Please provide a title.</div>
+              </div>
+              <div class="mb-3">
+                <label for="body" class="form-label">Body</label>
+                <input type="text" class="form-control" id="body" name="body">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div>
     </div>

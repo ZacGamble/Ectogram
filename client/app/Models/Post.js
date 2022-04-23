@@ -29,8 +29,8 @@ export class Post {
     <div>${this.body}</div>
     <div class="container d-flex justify-content-between">
     <p class="">
-      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#${this.id}" aria-expanded="false" aria-controls="collapseExample">
-      <i class="mdi mdi-comment-outline fs-3" title="show comments"></i>
+      <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#a123" aria-expanded="false" aria-controls="collapseExample">
+      <i class="mdi mdi-comment-outline fs-3" title="show comments" ></i>
       </button>
       <span class="flex-direction-row">
       <p class="btn"><i class="mdi mdi-pencil-box-outline fs-3" title="edit post"></i></p>
@@ -39,9 +39,9 @@ export class Post {
     </p>
     
     </div>
-    <div class="collapse" id="${this.id}">
+    <div class="collapse" id="a123">
       <div class="card text-center">
-        <ul class="list-unstyled" id="${this.id}-comments">
+        <ul class="list-unstyled" id="comments">
         <!--comments-->
        
         </ul>

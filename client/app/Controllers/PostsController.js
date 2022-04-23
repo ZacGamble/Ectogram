@@ -49,8 +49,7 @@ export class PostsController {
 
   async addPost() {
     try {
-      debugger
-      event.preventDefault()
+      window.event.preventDefault()
       /** @type {HTMLFormElement} */
       // @ts-ignore
       const formElem = window.event.target

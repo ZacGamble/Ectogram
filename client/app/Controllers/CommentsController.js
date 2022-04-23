@@ -5,7 +5,7 @@ function _drawComments() {
   const comments = ProxyState.comments
   let template = ''
   comments.forEach(c => { template += c.Template })
-  document.getElementById(`${}`).innerHTML = template
+  document.getElementById('posts-landing').innerHTML = template
 }
 export class CommentsController {
   constructor() {

@@ -35,8 +35,8 @@ class PostsService {
     await api.post('/api/posts', newPost)
     // const newPost = new Post(res.data)
     ProxyState.posts = [...ProxyState.posts, newPost]
-    return newPost
     console.log(newPost)
+    return newPost
   }
 
   async editPost() {
