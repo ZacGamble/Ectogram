@@ -15,13 +15,13 @@ function _drawPosts() {
 export class PostsController {
   constructor() {
     ProxyState.on('posts', _drawPosts)
+    ProxyState.on('comments', _drawPosts)
     this.getAllPosts()
   }
 
   async changeScore(postId, value) {
     try {
-      const newPost = await postsService.changeScore(postId, value)
-      console.log(newPost)
+      await postsService.changeScore(postId, value)
     } catch (error) {
       console.error(error)
     }
@@ -69,7 +69,11 @@ export class PostsController {
 
   }
 
-  async deletePost() {
-
+  async deletePost(postId) {
+    try {
+      await postsService.deletePost(postId)
+    } catch (error) {
+      console.error(error)
+    }
   }
 }

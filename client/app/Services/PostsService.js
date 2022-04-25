@@ -12,9 +12,10 @@ class PostsService {
     const post = ProxyState.posts.find(p => p.id === postId)
     const index = ProxyState.posts.indexOf(post)
     post.score += value
-    const newPost = new Post(post)
-    await api.put('api/posts/' + postId, newPost)
+    const editedPost = new Post(post)
+    await api.put('api/posts/' + postId, editedPost)
     ProxyState.posts.splice(index, 1, post)
+    // eslint-disable-next-line no-self-assign
     ProxyState.posts = ProxyState.posts
   }
 
@@ -26,24 +27,28 @@ class PostsService {
 
   }
 
-  async addPostComment() {
-
-  }
-
   async addPost(formData) {
     const newPost = new Post(formData)
     await api.post('/api/posts', newPost)
-    // const newPost = new Post(res.data)
-    ProxyState.posts = [...ProxyState.posts, newPost]
+    await this.getAllPosts()
+    // @ts-ignore
+    // eslint-disable-next-line no-undef
     bootstrap.Modal.getOrCreateInstance(document.getElementById('exampleModalCenter')).hide()
-    return newPost
   }
 
   async editPost() {
+    // TODO
 
   }
 
-  async deletePost() {
+  async deletePost(postId) {
+    const postToDelete = ProxyState.posts.find(p => postId === p.id)
+    if (!postToDelete) {
+      throw new Error("Couldn't find that post")
+    }
+    // i would delete comments here but we don't have to. in the real world you would
+    await api.delete('/api/posts/' + postId)
+    ProxyState.posts = ProxyState.posts.filter(p => p.id !== postId)
   }
 }
 

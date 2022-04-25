@@ -13,6 +13,7 @@ class CommentsService {
   }
 
   async createComment(body) {
+    console.log('server commentsservice createcomment')
     const comment = await dbContext.Comments.create(body)
     return comment
   }

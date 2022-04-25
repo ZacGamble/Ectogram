@@ -1,15 +1,31 @@
-#post {
-  position: relative;
-  width: 60vw;
-  max-height: 30%;
-  margin: 0 auto;
-  border-radius: 15px;
-  background-color: grey;
+
+.content-box{
+  object-fit: cover;
 }
 
+#post {
+  position: relative;
+  max-width: 60vw;
+  min-width: 50vw;
+  min-height: 40%;
+  /* max-height: 40%; */
+  margin: 0 auto;
+  border-radius: 15px;
+  /* background-color: grey; */
+}
+
+.vote-buttons{
+  max-width: 5vw;
+}
+.vote-buttons.i{
+  font-size: smaller;
+}
+
+
 .gradient-background {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(31, 51, 51, 0.5242913063992276) 77%, rgba(120, 227, 208, 0.0158643401070927) 100%);
+  background-color: rgb(2, 0, 36);
+  background: linear-gradient(180deg, rgba(2, 0, 36, 1) 0%, rgba(31, 51, 51, 0.5242913063992276) 77%, rgba(120, 227, 207, 0.384) 100%);
+  border-radius: 3px;
 }
 
 #background-video {

@@ -8,8 +8,7 @@ export class CommentsController {
 
   async getAllComments() {
     try {
-      const res = await commentsService.getAllComments()
-      console.log('res in comments controller', res)
+      await commentsService.getAllComments()
     } catch (error) {
       console.log("Couldn't get comments")
     }
@@ -17,7 +16,16 @@ export class CommentsController {
 
   async addComment(postId) {
     try {
-      await commentsService.addComment(postId)
+      window.event.preventDefault()
+      /** @type {HTMLFormElement} */
+      // @ts-ignore
+      const formElem = window.event.target
+      const formData = {
+        postId: postId,
+        body: formElem.commentContent.value
+      }
+      formElem.reset()
+      await commentsService.addComment(formData)
     } catch (error) {
       console.error(error)
     }

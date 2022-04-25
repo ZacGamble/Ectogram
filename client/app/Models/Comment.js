@@ -6,9 +6,9 @@ export class Comment {
     this.creatorId = data.creatorId
   }
 
-  get Template() {
+  get Template() { // TODO username functionality -> accounts
     return `
-   <li><h6>${this.body}</h6></li>
+   <li class="d-flex text-dark fs-6 me-2"><p>Shmee-User</p><p>${this.body}</p></li>
    `
   }
 }

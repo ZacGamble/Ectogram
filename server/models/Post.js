@@ -5,7 +5,7 @@ export const PostSchema = new Schema(
     creatorName: { type: String, required: true },
     image: { type: String },
     body: { type: String, required: true },
-    // creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },TODO
+    // creatorId: { type: Schema.Types.ObjectId, ref: 'Account', required: true },
     score: { type: Number },
     datePosted: { type: Date },
     title: { type: String }

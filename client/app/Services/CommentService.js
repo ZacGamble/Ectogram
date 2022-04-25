@@ -6,11 +6,14 @@ class CommentsService {
   async getAllComments() {
     const res = await api.get('/api/comments')
     ProxyState.comments = res.data.map(p => new Comment(p))
-    console.log('hi from comments service', res.data)
   }
 
-  async addComment(postId) {
-    const res = await api.post(`/api/${this.postId}/comments`)
+  async addComment(formData) {
+    formData.creatorId = ProxyState.account.id
+    formData.name = ProxyState.account.name
+    const newComment = new Comment(formData)
+    await api.post('/api/comments', newComment)
+    await this.getAllComments()
   }
 }
 export const commentsService = new CommentsService()
